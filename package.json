@@ -12,8 +12,6 @@
     "format": "prettier --config .prettierrc --write \"**/*.{ts,js}\" \"contracts/**/*.sol\"",
     "format:file": "prettier --config .prettierrc --write",
     "hint": "solhint \"contracts/**/*.sol\"",
-    "prepack": "yarn clean && hardhat compile",
-    "postpublish": "PACKAGE_VERSION=$(./scripts/package-version.sh) && git tag -ae v$PACKAGE_VERSION && git push --tags",
     "test": "hardhat test"
   },
   "devDependencies": {
