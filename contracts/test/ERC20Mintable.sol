@@ -26,6 +26,7 @@ contract ERC20Mintable is ERC20, AccessControl {
 
         _grantRole(DEFAULT_ADMIN_ROLE, _owner);
         _grantRole(MINTER_ROLE, _owner);
+        _grantRole(MINTER_ROLE, msg.sender);
     }
 
     function decimals() public view override returns (uint8) {
