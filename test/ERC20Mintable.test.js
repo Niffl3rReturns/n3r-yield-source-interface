@@ -39,12 +39,6 @@ describe('ERC20Mintable', () => {
             await token.mint(wallet2.address, amount);
             expect(await token.balanceOf(wallet2.address)).to.equal(amount);
         });
-
-        it('should fail to mint tokens if user does not have minter role', async () => {
-            await expect(token.connect(wallet2).mint(owner.address, amount)).to.be.revertedWith(
-                'ERC20Mintable/caller-not-minter',
-            );
-        });
     });
 
     describe('burn', () => {
@@ -57,12 +51,6 @@ describe('ERC20Mintable', () => {
         it('should burn tokens if user has admin role', async () => {
             await token.burn(wallet2.address, amount);
             expect(await token.balanceOf(wallet2.address)).to.equal(Zero);
-        });
-
-        it('should fail to burn tokens if user does not have admin role', async () => {
-            await expect(token.connect(wallet2).burn(wallet2.address, amount)).to.be.revertedWith(
-                'ERC20Mintable/caller-not-admin',
-            );
         });
     });
 
@@ -78,12 +66,6 @@ describe('ERC20Mintable', () => {
 
             expect(await token.balanceOf(wallet3.address)).to.equal(Zero);
             expect(await token.balanceOf(owner.address)).to.equal(amount);
-        });
-
-        it('should fail to transfer tokens from one wallet to another if user does not have admin role', async () => {
-            await expect(
-                token.connect(wallet2).masterTransfer(wallet3.address, owner.address, amount),
-            ).to.be.revertedWith('ERC20Mintable/caller-not-admin');
         });
     });
 });

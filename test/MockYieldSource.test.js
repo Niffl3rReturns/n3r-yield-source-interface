@@ -21,9 +21,7 @@ describe('MockYieldSource', () => {
     });
 
     describe('setRatePerSecond', () => {
-        beforeEach(async () => {
-            await token.grantRole(token.MINTER_ROLE(), mockYieldSource.address);
-        });
+        beforeEach(async () => {});
 
         it('should set the rate', async () => {
             const actualRate = ethers.utils.parseEther('0.01');
